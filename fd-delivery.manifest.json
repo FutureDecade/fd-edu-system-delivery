@@ -1,0 +1,164 @@
+{
+  "version": "1",
+  "installer": {
+    "repoUrl": "https://github.com/FutureDecade/fd-edu-system-delivery.git",
+    "repoBranch": "main",
+    "remoteInstallScriptUrl": "https://raw.githubusercontent.com/FutureDecade/fd-edu-system-delivery/main/scripts/remote-install.sh",
+    "installPath": "/opt/fd-edu-system"
+  },
+  "groups": [
+    { "key": "images", "label": "镜像与仓库" },
+    { "key": "institution", "label": "机构信息" },
+    { "key": "administrator", "label": "初始管理员" },
+    { "key": "credentials", "label": "交付凭据" },
+    { "key": "runtime", "label": "运行策略" }
+  ],
+  "domainSlots": [
+    {
+      "key": "edu",
+      "label": "教育系统域名",
+      "envKey": "EDU_DOMAIN",
+      "sourceField": "primaryDomain",
+      "required": true,
+      "placeholder": "edu.example.com",
+      "description": "管理后台、公开站和 API 共用此 HTTPS 域名。"
+    }
+  ],
+  "envFields": [
+    {
+      "key": "FD_EDU_RUNTIME_IMAGE",
+      "label": "FD Edu Runtime Image",
+      "type": "text",
+      "scope": "preset",
+      "required": true,
+      "editable": true,
+      "advanced": true,
+      "group": "images"
+    },
+    {
+      "key": "ACR_USERNAME",
+      "label": "ACR 用户名",
+      "type": "text",
+      "scope": "preset",
+      "required": true,
+      "editable": true,
+      "advanced": true,
+      "group": "credentials"
+    },
+    {
+      "key": "INITIAL_ORGANIZATION_NAME",
+      "label": "机构名称",
+      "type": "text",
+      "scope": "user_input",
+      "required": true,
+      "editable": true,
+      "advanced": false,
+      "group": "institution",
+      "placeholder": "未来教育中心"
+    },
+    {
+      "key": "INITIAL_ORGANIZATION_BRAND_NAME",
+      "label": "品牌名称",
+      "type": "text",
+      "scope": "user_input",
+      "required": false,
+      "editable": true,
+      "advanced": false,
+      "group": "institution",
+      "description": "留空时使用机构名称。"
+    },
+    {
+      "key": "INITIAL_ORGANIZATION_PHONE",
+      "label": "机构联系电话",
+      "type": "text",
+      "scope": "user_input",
+      "required": false,
+      "editable": true,
+      "advanced": false,
+      "group": "institution"
+    },
+    {
+      "key": "INITIAL_ORGANIZATION_ADDRESS",
+      "label": "机构地址",
+      "type": "text",
+      "scope": "user_input",
+      "required": false,
+      "editable": true,
+      "advanced": false,
+      "group": "institution"
+    },
+    {
+      "key": "INITIAL_ADMIN_EMAIL",
+      "label": "管理员邮箱",
+      "type": "email",
+      "scope": "user_input",
+      "required": true,
+      "editable": true,
+      "advanced": false,
+      "group": "administrator"
+    },
+    {
+      "key": "INITIAL_ADMIN_DISPLAY_NAME",
+      "label": "管理员姓名",
+      "type": "text",
+      "scope": "user_input",
+      "required": true,
+      "editable": true,
+      "advanced": false,
+      "defaultValue": "系统管理员",
+      "group": "administrator"
+    },
+    {
+      "key": "FD_RUNTIME_IMAGE_UPDATE_POLICY",
+      "label": "镜像更新策略",
+      "type": "text",
+      "scope": "preset",
+      "required": true,
+      "editable": true,
+      "advanced": true,
+      "defaultValue": "manual",
+      "group": "runtime"
+    }
+  ],
+  "assets": [
+    {
+      "key": "fd-edu-runtime-image",
+      "label": "FD Edu 运行镜像",
+      "type": "docker_image",
+      "required": true,
+      "visibility": "private",
+      "imageEnv": "FD_EDU_RUNTIME_IMAGE",
+      "authSecret": "ACR_PASSWORD",
+      "group": "images",
+      "description": "由 FD-edu-system 现有 CI 发布到阿里云 ACR。"
+    }
+  ],
+  "secretFields": [
+    {
+      "key": "INITIAL_ADMIN_PASSWORD",
+      "label": "初始管理员密码",
+      "description": "至少 12 位；首次登录后必须修改。该值仅用于首次初始化，不写入部署 .env。",
+      "type": "secret",
+      "scope": "user_input",
+      "required": true,
+      "editable": true,
+      "advanced": false,
+      "group": "administrator"
+    },
+    {
+      "key": "ACR_PASSWORD",
+      "label": "ACR 密码",
+      "description": "由 FD Stack 管理员配置，只用于目标服务器拉取私有镜像。",
+      "type": "secret",
+      "scope": "preset",
+      "required": true,
+      "editable": true,
+      "advanced": true,
+      "group": "credentials"
+    }
+  ],
+  "notes": [
+    "This repository contains deployment configuration only; the application is delivered as a private image.",
+    "ACR credentials and the initial administrator password are not persisted in the deployment env file."
+  ]
+}
