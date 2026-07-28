@@ -36,7 +36,7 @@ FD_DOMAIN_BINDING_SOURCE="${FD_DOMAIN_BINDING_SOURCE:-primaryDomain}"
 
 touch "${ENV_FILE}"
 set_env_value "${ENV_FILE}" NODE_ENV production
-set_env_value "${ENV_FILE}" APP_NAME fd-edu-system
+set_env_value "${ENV_FILE}" APP_NAME lingcoo-edu-system
 set_env_value "${ENV_FILE}" APP_VERSION "${FD_EDU_RUNTIME_IMAGE##*:}"
 set_env_value "${ENV_FILE}" API_HOST 0.0.0.0
 set_env_value "${ENV_FILE}" API_PORT 8090
@@ -94,6 +94,6 @@ done
 bash "${ROOT_DIR}/scripts/install-deployment-timers.sh"
 bash "${ROOT_DIR}/scripts/report-deployment-status.sh" || true
 
-echo "FD Edu deployment completed: https://${EDU_DOMAIN}"
+echo "Lingcoo Edu deployment completed: https://${EDU_DOMAIN}"
 echo "Admin login: https://${EDU_DOMAIN}/admin/"
 echo "Initial administrator: ${INITIAL_ADMIN_EMAIL}"

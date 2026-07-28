@@ -1,11 +1,11 @@
-# FD Stack product setup
+# Lingcoo Stack product setup
 
-Create the application in the FD Stack admin UI with these stable identifiers:
+Create the application in the Lingcoo Stack admin UI with these stable identifiers:
 
 - App code: `fd_edu_system`
 - Type: `web_app`
 - Delivery mode: `one_click`
-- Manifest repository: `https://github.com/FutureDecade/fd-edu-system-delivery`
+- Manifest repository: `https://github.com/LingcooTech/lingcoo-easydeploy-edu-system-delivery`
 - Manifest branch: `main`
 - Manifest path: `fd-delivery.manifest.json`
 

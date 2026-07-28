@@ -1,10 +1,10 @@
-# FD Edu System Delivery
+# Lingcoo Edu System Delivery
 
-This is the thin delivery repository for the FD Edu private deployment product.
+This is the thin delivery repository for the Lingcoo Edu private deployment product.
 It contains deployment configuration and operations scripts only. The application
 is delivered as a private ACR image; application source code is not included.
 
-The supported installation path is the one-time command issued by FD Stack. It
+The supported installation path is the one-time command issued by Lingcoo Stack. It
 targets a clean Debian or Ubuntu server with root or sudo access and requires the
 customer's domain to resolve to that server.
 

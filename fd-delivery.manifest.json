@@ -1,10 +1,10 @@
 {
   "version": "1",
   "installer": {
-    "repoUrl": "https://github.com/FutureDecade/fd-edu-system-delivery.git",
+    "repoUrl": "https://github.com/LingcooTech/lingcoo-easydeploy-edu-system-delivery.git",
     "repoBranch": "main",
-    "remoteInstallScriptUrl": "https://raw.githubusercontent.com/FutureDecade/fd-edu-system-delivery/main/scripts/remote-install.sh",
-    "installPath": "/opt/fd-edu-system"
+    "remoteInstallScriptUrl": "https://raw.githubusercontent.com/LingcooTech/lingcoo-easydeploy-edu-system-delivery/main/scripts/remote-install.sh",
+    "installPath": "/opt/lingcoo-edu-system"
   },
   "groups": [
     { "key": "images", "label": "镜像与仓库" },
@@ -27,7 +27,7 @@
   "envFields": [
     {
       "key": "FD_EDU_RUNTIME_IMAGE",
-      "label": "FD Edu Runtime Image",
+      "label": "Lingcoo Edu Runtime Image",
       "type": "text",
       "scope": "preset",
       "required": true,
@@ -123,7 +123,7 @@
   "assets": [
     {
       "key": "fd-edu-runtime-image",
-      "label": "FD Edu 运行镜像",
+      "label": "Lingcoo Edu 运行镜像",
       "type": "docker_image",
       "required": true,
       "visibility": "private",
@@ -148,7 +148,7 @@
     {
       "key": "ACR_PASSWORD",
       "label": "ACR 密码",
-      "description": "由 FD Stack 管理员配置，只用于目标服务器拉取私有镜像。",
+      "description": "由 Lingcoo Stack 管理员配置，只用于目标服务器拉取私有镜像。",
       "type": "secret",
       "scope": "preset",
       "required": true,

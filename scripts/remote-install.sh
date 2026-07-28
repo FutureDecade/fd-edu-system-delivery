@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-INSTALL_DIR="${INSTALL_DIR:-/opt/fd-edu-system}"
-REPO_URL="${REPO_URL:-https://github.com/FutureDecade/fd-edu-system-delivery.git}"
+INSTALL_DIR="${INSTALL_DIR:-/opt/lingcoo-edu-system}"
+REPO_URL="${REPO_URL:-https://github.com/LingcooTech/lingcoo-easydeploy-edu-system-delivery.git}"
 REPO_BRANCH="${REPO_BRANCH:-main}"
 
 run_root_cmd() {
